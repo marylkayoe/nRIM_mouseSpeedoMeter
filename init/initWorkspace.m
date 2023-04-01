@@ -14,7 +14,7 @@ root_dir = fileparts(mfilename('fullpath'));
 
 % Load any necessary data or variables
 % standard workspace file name convention: PRJNAME-WS.mat
-load('PRJNAME-WS.mat');
+load('nRIM_mouseSpeedoMeter-WS.mat');
 
 % Set any desired default settings or preferences
 set(0, 'DefaultFigureWindowStyle', 'docked');
