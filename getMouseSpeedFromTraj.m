@@ -62,7 +62,7 @@ function [instSpeeds] = getMouseSpeedFromTraj(traj, FRAMERATE, speedWindow)
 
     % Replace outliers with NaN
     if any(OL)
-        disp(['removing speed outliers in time window of ' num2str(outlierWindow)]);
+        %disp(['removing speed outliers in time window of ' num2str(outlierWindow)]);
         instSpeeds(OL) = nan;
         % Gap fill the trajectory where outliers were found
         instSpeeds = gapFillTrajectory(instSpeeds);
