@@ -25,6 +25,9 @@ function testGapFilling(nSamples, N, gapLength)
     % replace with any function you want to try
     gapFilledTrajectory = gapFillTrajectory(traj);
 
+    % Calculate RMSE and MAE
+    [rmse, mae, relativeRMSE] = evaluateGapFillingPerformance(traj, N, gapLength);
+
     % Plot the original and gap-filled trajectories
     figure;
 
@@ -35,7 +38,7 @@ function testGapFilling(nSamples, N, gapLength)
     plot3(traj(:, 1), traj(:, 2), traj(:, 3), 'DisplayName', 'Original', 'LineWidth', 4);
     hold off;
     legend;
-    title('3D Trajectories');
+    title(['Original vs gap-filled: RMSE = ' num2str(rmse) ', MAE = ' num2str(mae) ', relative RMSE = ' num2str(relativeRMSE) '%']);
     xlabel('X');
     ylabel('Y');
     zlabel('Z');
