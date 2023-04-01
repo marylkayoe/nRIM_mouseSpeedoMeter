@@ -52,8 +52,9 @@ function [instSpeeds] = getMouseSpeedFromTraj(traj, FRAMERATE, speedWindow)
 
     % Pad the end of instSpeeds with NaNs to match the length of the input trajectory
     instSpeeds(end + 1:end + speedWindow - 1, :) = NaN;
-    % Outlier detection window size: either FFT-guided or just simply 4x speedWindow
+    % Outlier detection window size: either FFT-guided (NOT PROVEN)
     %outlierWindow = selectOptimalOutlierWindow(instSpeeds(1:end-speedWindow), FRAMERATE);
+    %  or just simply 4x speedWindow (WORKS)
     outlierWindow = 4 * speedWindow;
 
      % Detect outliers using a moving median approach
