@@ -1,4 +1,3 @@
-
 function [vels] = getVelocityFromTraj(trajMat, USENAN, velWin, REMOVEOL, FRAMERATE)
 % input : gap-filled 3D trajectory from which we want velocity (single step,single marker)
 
