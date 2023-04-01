@@ -4,11 +4,11 @@
 clear; clc; close all
 
 % Define the root directory of the project
-root_dir = fileparts(mfilename('fullpath'));
+rootDir = fileparts(mfilename('fullpath'));
 
 % Add subdirectories to the path, e.g. data storage root
-%addpath(fullfile(root_dir, 'subfolder1'));
-%addpath(fullfile(root_dir, 'subfolder2'));
+% addpath(fullfile(root_dir, 'subfolder1'));
+% addpath(fullfile(root_dir, 'subfolder2'));
 
 % Add any additional paths here
 
@@ -20,4 +20,4 @@ load('nRIM_mouseSpeedoMeter-WS.mat');
 set(0, 'DefaultFigureWindowStyle', 'docked');
 
 % Display a message to indicate that the workspace has been set up
-disp('Workspace has been set up successfully.');
+disp('Workspace for speedometer code has been set up successfully.');
