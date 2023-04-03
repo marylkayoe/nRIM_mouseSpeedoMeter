@@ -32,4 +32,20 @@ function [rmse, mae, relativeRMSE] = evaluateGapFillingPerformance(traj, N, gapL
 
      % Calculate the relative RMSE as a percentage of the data range
      relativeRMSE = (rmse / dataRange) * 100;
+     
+      % Plot the original and gap-filled trajectories
+    figure;
+
+    % Plot the 3D trajectories
+    figure;
+    hold on;
+    plot3(gapFilledTrajectory(:, 1), gapFilledTrajectory(:, 2), gapFilledTrajectory(:, 3), 'DisplayName', 'Gap-filled', 'LineWidth', 2);
+    plot3(traj(:, 1), traj(:, 2), traj(:, 3), 'DisplayName', 'Original', 'LineWidth', 4);
+    hold off;
+    legend;
+    title(['Original vs gap-filled: RMSE = ' num2str(rmse) ', MAE = ' num2str(mae) ', relative RMSE = ' num2str(relativeRMSE) '%']);
+    xlabel('X');
+    ylabel('Y');
+    zlabel('Z');
+    grid on;
 end
