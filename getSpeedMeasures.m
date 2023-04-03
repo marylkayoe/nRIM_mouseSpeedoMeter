@@ -36,7 +36,7 @@ function [meanSpeed, maxSpeed, locoTime, totalDistance, totalDistanceLocomoting,
 
     % Calculate instantaneous speeds using getMouseSpeedFromTraj
     instSpeeds = getMouseSpeedFromTraj(gapFilledTrajectory, FRAMERATE);
-    [locoFrames, isLocomoting] = getLocoFrames(instSpeeds, LOCOTHRESHOLD);
+    [~, isLocomoting] = getLocoFrames(instSpeeds, LOCOTHRESHOLD);
     % Compute mean and max speeds
     meanSpeed = nanmean(instSpeeds);
     meanSpeedLocomoting = nanmean(instSpeeds(isLocomoting));
@@ -50,7 +50,7 @@ function [meanSpeed, maxSpeed, locoTime, totalDistance, totalDistanceLocomoting,
     totalDistance = nansum(instSpeeds) * (1/FRAMERATE);
     totalDistanceLocomoting = nansum(instSpeeds(isLocomoting)) * (1/FRAMERATE);
     % Get locomotion frames and logical array
-    [locoFrames, isLocomoting] = getLocoFrames(instSpeeds, LOCOTHRESHOLD);
+    [~, isLocomoting] = getLocoFrames(instSpeeds, LOCOTHRESHOLD);
 
     % Compute time spent locomoting
     locoTime = sum(isLocomoting) / FRAMERATE;
