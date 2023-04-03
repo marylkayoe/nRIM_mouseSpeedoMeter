@@ -1,4 +1,7 @@
-function [meanSpeed, maxSpeed, locoTime, totalDistance, totalDistanceLocomoting, instSpeeds] = getSpeedMeasures(mouseTrajectory, FRAMERATE)
+function [meanSpeed, maxSpeed, locoTime, totalDistance, totalDistanceLocomoting, meanSpeedLocomoting, instSpeeds] = getSpeedMeasures(mouseTrajectory, FRAMERATE, dataDescriptor)
+
+%inputs: 
+
 
     % Set the default locomotion threshold
     LOCOTHRESHOLD = 40;
@@ -18,6 +21,8 @@ function [meanSpeed, maxSpeed, locoTime, totalDistance, totalDistanceLocomoting,
     [locoFrames, isLocomoting] = getLocoFrames(instSpeeds, LOCOTHRESHOLD);
     % Compute mean and max speeds
     meanSpeed = nanmean(instSpeeds);
+    meanSpeedLocomoting = nanmean(instSpeeds(isLocomoting));
+
     maxSpeed = max(instSpeeds);
 
     % advanced measures from the speed array
@@ -33,7 +38,8 @@ function [meanSpeed, maxSpeed, locoTime, totalDistance, totalDistanceLocomoting,
     locoTime = sum(isLocomoting) / FRAMERATE;
 
     % Placeholder for plotting the data
-    plotTrialSpeedData(instSpeeds, LOCOTHRESHOLD, FRAMERATE);
+    infoString = sprintf('Mean Speed: %.2f mm/s\nMax Speed: %.2f mm/s\nLoco Time: %.2f s\nTotal Distance: %.2f mm\nTotal Distance Locomoting: %.2f mm\nMean Speed Locomoting: %.2f mm/s', meanSpeed, maxSpeed, locoTime, totalDistance, totalDistanceLocomoting, meanSpeedLocomoting);
+    plotTrialSpeedData(instSpeeds, LOCOTHRESHOLD, FRAMERATE, infoString, dataDescriptor);
 
 
 end
